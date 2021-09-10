@@ -8,5 +8,5 @@ class CustomUser(AbstractUser):
 class ReviewGroup(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     host = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
-    group_name = models.CharField(max_length=255)
+    group_name = models.CharField(max_length=100, unique=True)
     members = models.ManyToManyField(CustomUser, related_name='members')
